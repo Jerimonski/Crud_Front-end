@@ -59,16 +59,17 @@ function App() {
         </label>
         <button type='submit'>Guardar</button>
       </form>
-      {items &&
-        items.map((item, index) => {
-          return (
-            <div key={index}>
-              {item.value} {item.description}
-            </div>
-          )
-        })}
-      <details>asdsad</details>
-      <dialog>asdasd</dialog>
+      <details>
+        {items &&
+          items.map((item, index) => {
+            return (
+              <li key={index}>
+                {item.value} {item.description}
+              </li>
+            )
+          })}
+        asdsad
+      </details>
     </div>
   )
 }
