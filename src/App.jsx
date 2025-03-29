@@ -68,7 +68,6 @@ function App() {
               </li>
             )
           })}
-        asdsad
       </details>
     </div>
   )
