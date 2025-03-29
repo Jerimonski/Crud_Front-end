@@ -33,9 +33,7 @@ Los usuarios pueden reservar turnos en gimnasios, canchas deportivas y clases de
    git clone https://github.com/tuusuario/reservas-frontend.git
 
 2.  Instala las dependencias:
-   
-   npm install  # o yarn install
+- npm install  # o yarn install
 
 4. Inicia el servidor de desarrollo:
-   
-npm run dev  # o yarn dev
+- npm run dev  # o yarn dev
