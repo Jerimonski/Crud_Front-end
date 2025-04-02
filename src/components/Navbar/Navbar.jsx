@@ -5,10 +5,12 @@ export default function Navbar() {
     <header className='font-Inter py-4 px-10 w-full bg-black text-white flex items-center top-0 justify-between'>
       <div className='flex flex-grow basis-0'>
         <Link className='flex items-center gap-2' to={"/Home"}>
-          <div className='text-lg font-semibold rounded bg-light-green p-1 text-black'>
-            BMF
+          <div className='w-14 h-10'>
+            <img src='/LogoBookMyFit.png' alt='LogoBookMyFit' />
           </div>
-          <span className='font-semibold'>BookMyFit</span>
+          <span className='font-semibold border-b-2 border-light-green'>
+            BookMyFit
+          </span>
         </Link>
       </div>
       <nav>
