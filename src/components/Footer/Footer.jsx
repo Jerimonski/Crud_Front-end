@@ -7,11 +7,13 @@ export default function Footer() {
     <footer className='font-Inter w-full py-12 bg-black text-white absolute bottom-0'>
       <div className='grid grid-cols-4'>
         <div className='space-y-4 space-x-4 px-4'>
-          <Link className='flex items-center' to={"/Home"}>
-            <div className='w-22 h-12'>
+          <Link className='flex items-center gap-2' to={"/Home"}>
+            <div className='w-14 h-10'>
               <img src='/LogoBookMyFit.png' alt='LogoBookMyFit' />
             </div>
-            <span className='font-semibold'>BookMyFit</span>
+            <span className='font-semibold border-b-2 border-light-green'>
+              BookMyFit
+            </span>
           </Link>
           <p className='text-tertiary-text text-xs'>
             Nuestra misión es facilitar una experiencia deportiva accesible para
