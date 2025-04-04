@@ -6,8 +6,8 @@ export default function OurActivitiesSection() {
   return <div className='text-lg'>{/* Título y Descripción */}
    
   <h2 className="text-3xl font-bold">Our Activities</h2>
-  <p className="text-gray-600 mt-2">
-    Explore our wide range of sports activities and classes available for booking.
+  <p className="text-gray-700 mt-2 font-bold">
+  ¡Vive la experiencia! Reserva ya entre nuestras mejores clases y actividades deportivas.
   </p>
 
   {/* Contenedor de Tarjetas */}
@@ -21,7 +21,7 @@ export default function OurActivitiesSection() {
 
   {/* Botón de Ver Más */}
   <div className="text-center mt-6">
-    <button className="border border-green-500 text-green-500 px-4 py-2 rounded-lg">
+    <button className="border font-bold border-gray-500 text-gray-500 px-4 py-2 rounded-lg">
       View All Activities
     </button>
   </div></div>
