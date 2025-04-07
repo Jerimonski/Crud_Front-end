@@ -22,6 +22,7 @@ export default function Navbar() {
         </ul>
       </nav>
       <nav className='flex flex-grow justify-end basis-0 [&>button]:px-4 [&>button]:py-2 [&>button]:rounded [&>button]:duration-300 gap-4'>
+          <Link to={"/Signin"}>
         <button className='flex items-center gap-3 hover:bg-white hover:text-black'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -36,6 +37,7 @@ export default function Navbar() {
           </svg>
           Sign In
         </button>
+          </Link>
         <button className='hover:brightness-80 bg-light-green text-black'>
           Book Now
         </button>

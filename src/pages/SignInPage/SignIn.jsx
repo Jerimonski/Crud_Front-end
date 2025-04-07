@@ -1,9 +1,10 @@
-import React from "react"
+/*import React from "react"
 
 export default function SignIn() {
   return <div>Iniciar Sesión</div>
 }
-/*import React, { useState } from "react";
+*/
+import React, { useState } from "react";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -51,4 +52,4 @@ export default function SignIn() {
     </div>
   );
 }
-*/
+
