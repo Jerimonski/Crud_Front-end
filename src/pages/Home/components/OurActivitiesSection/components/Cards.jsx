@@ -10,7 +10,7 @@ export default function Cards({title, text}) {
       </p>
       <div className='flex justify-center'>
       <button className="mt-4 bg-yellow-500 px-6 py-2 w-fit text-black font-semibold rounded hover:scale-110 duration-300">
-        Book Now
+        Reservar Ahora 
       </button>
       </div>
     </div>

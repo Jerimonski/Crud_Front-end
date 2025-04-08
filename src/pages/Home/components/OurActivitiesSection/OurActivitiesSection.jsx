@@ -21,7 +21,7 @@ export default function OurActivitiesSection() {
 
   {/* Botón de Ver Más */}
   <div className="text-center mt-6">
-    <button className="border font-bold border-gray-500 text-gray-500 px-4 py-2 rounded-lg">
+    <button className="border font-bold border-gray-500 text-gray-800 px-4 py-2 hover:scale-110 hover:bg-emerald-300  duration-300 rounded-lg">
       View All Activities
     </button>
   </div></div>
