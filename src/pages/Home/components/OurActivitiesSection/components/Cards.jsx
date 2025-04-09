@@ -2,16 +2,16 @@ import React from "react"
 
 export default function Cards({ title, text }) {
   return (
-    <section className='bg-linear-to-b from-white to-black px-8 text-sm rounded-md shadow-lg flex flex-col justify-between h-[320px] max-w-[320px]'>
-      <div className='pt-36'>
-        <h3 className='text-lg text-white font-semibold'>{title}</h3>
-        <p className='text-secondary-text mt-2'>{text}</p>
+    <article className='relative bg-linear-to-b from-white to-black text-sm rounded-md min-w-[320px] min-h-[280px]'>
+      <div className='absolute bottom-0 px-6 py-4'>
+        <h3 className='text-lg text-white font-semibold py-2'>{title}</h3>
+        <p className='text-secondary-text'>{text}</p>
         <div className='flex justify-center'>
           <button className='w-full mt-4 bg-light-green py-2 text-black font-semibold rounded hover:scale-110 duration-300'>
             Reservar Ahora
           </button>
         </div>
       </div>
-    </section>
+    </article>
   )
 }
