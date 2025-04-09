@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { axios } from "axios";
+import axios from "axios";
 
 export default function WelcomeToSection() {
   const [user, setUser] = useState([]);
@@ -10,7 +10,7 @@ export default function WelcomeToSection() {
       .get("http://localhost:3000/usuarios/")
       .then((response) => setUser(response.data));
   };
-
+  console.log(user);
   useEffect(() => {
     dataFetch();
   }, []);
@@ -21,7 +21,7 @@ export default function WelcomeToSection() {
       <h1 className=''>Hola mundo!</h1>
       {user &&
         user.map((user, index) => {
-          return <div key={index}>{user.name}</div>;
+          return <div key={index}>{user.nombre}</div>;
         })}
     </div>
   );
