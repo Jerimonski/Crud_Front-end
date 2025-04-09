@@ -4,7 +4,7 @@ import SocialMediaIcons from "./../ui/SocialMediaIcons"
 
 export default function Footer() {
   return (
-    <footer className='font-Inter w-full py-12 bg-black text-white absolute bottom-0'>
+    <footer className='font-Inter w-full py-12 bg-black text-white '>
       <div className='grid grid-cols-4'>
         <div className='space-y-4 space-x-4 px-4'>
           <Link className='flex items-center gap-2' to={"/Home"}>
