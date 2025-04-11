@@ -6,9 +6,10 @@ export default function useUsers() {
 
   const fetchData = () => {
     return axios
-      .get("http://192.168.1.92:3000/usuarios/")
+      .get("http://localHost:3000/usuarios/")
       .then((response) => setUser(response.data))
   }
+  console.log(users)
 
   useEffect(() => {
     fetchData()

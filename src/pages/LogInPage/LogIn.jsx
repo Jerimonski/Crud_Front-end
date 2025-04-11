@@ -1,39 +1,83 @@
 import React, { useState } from "react"
-import { useUserContext } from "../../contexts/userContext" // ajusta el path
-import { useNavigate } from "react-router-dom" // si estás usando react-router
+import axios from "axios"
+import { useUserContext } from "../../contexts/userContext"
+import { useNavigate } from "react-router-dom"
 import useUsers from "../../hooks/useUsers"
 
 export default function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [isRegistering, setIsRegistering] = useState(false)
+  const [name, setName] = useState("")
+
   const { setCurrentUser } = useUserContext()
   const navigate = useNavigate()
   const { users } = useUsers()
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const user = users.find(
-      (u) =>
-        u.email.toLowerCase() === email.toLowerCase() &&
-        u.contraseña === password
-    )
+    if (isRegistering) {
+      const newUser = {
+        nombre: name,
+        email,
+        contraseña: password,
+      }
 
-    if (user) {
-      setCurrentUser(user)
-      alert(`Bienvenido, ${user.nombre} 💚`)
-      navigate("/") // redirige al home
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/usuarios",
+          newUser
+        )
+
+        if (response.status === 201 || response.status === 200) {
+          alert("Usuario registrado con éxito 🎉 ¡Ahora inicia sesión, oppa~!")
+          setIsRegistering(false)
+          setName("")
+          setEmail("")
+          setPassword("")
+        }
+      } catch (error) {
+        console.error("Error al registrar:", error)
+        alert("¡Uy! Ocurrió un error al registrarse 😢")
+      }
     } else {
-      alert("Correo o contraseña incorrectos 😭")
+      const user = users.find(
+        (u) =>
+          u.email.toLowerCase() === email.toLowerCase() &&
+          u.contraseña === password
+      )
+
+      if (user) {
+        setCurrentUser(user)
+        alert(`Bienvenido, ${user.nombre} 💚`)
+        navigate("/")
+      } else {
+        alert("Correo o contraseña incorrectos 😭")
+      }
     }
   }
 
   return (
     <div className='flex flex-col items-center justify-center min-h-screen bg-gray-100'>
-      <h2 className='text-2xl font-bold mb-4 text-gray-800'>Iniciar Sesión</h2>
+      <h2 className='text-2xl font-bold mb-4 text-gray-800'>
+        {isRegistering ? "Registro" : "Iniciar Sesión"}
+      </h2>
       <form
         className='bg-white p-6 rounded shadow-md w-80'
         onSubmit={handleSubmit}
       >
+        {isRegistering && (
+          <input
+            type='text'
+            placeholder='Nombre'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className='border p-2 rounded w-full mb-2'
+            required
+          />
+        )}
+
         <input
           type='email'
           placeholder='Correo electrónico'
@@ -47,16 +91,29 @@ export default function Login() {
           placeholder='Contraseña'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className='border p-2 rounded w-full mb-2'
+          className='border p-2 rounded w-full mb-4'
           required
         />
         <button
           type='submit'
-          className='bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded w-full font-semibold'
+          className={`${
+            isRegistering
+              ? "bg-yellow-500 hover:bg-yellow-600 text-black"
+              : "bg-green-500 hover:bg-green-600 text-white"
+          } px-4 py-2 rounded w-full font-semibold`}
         >
-          Iniciar Sesión 💫
+          {isRegistering ? "Registrarse ✨" : "Iniciar Sesión 💫"}
         </button>
       </form>
+
+      <button
+        onClick={() => setIsRegistering(!isRegistering)}
+        className='mt-4 text-yellow-500 hover:text-yellow-700 font-medium'
+      >
+        {isRegistering
+          ? "¿Ya tienes cuenta? Inicia sesión"
+          : "¿No tienes cuenta? Regístrate"}
+      </button>
     </div>
   )
 }
