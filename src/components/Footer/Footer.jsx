@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import ItemsList from "./components/ItemsList"
-import SocialMediaIcons from "./../ui/SocialMediaIcons"
+import { Facebook, Twitter, Instagram } from "../ui/Icons"
 
 export default function Footer() {
   return (
@@ -20,7 +20,11 @@ export default function Footer() {
             todos, desde aquellos que dan sus primeros pasos hasta los atletas
             experimentados.
           </p>
-          <SocialMediaIcons />
+          <div className='flex gap-4 py-3 px-2 [&>svg]:cursor-pointer [&>svg]:p-2 [&>svg]:rounded [&>svg]:hover:bg-white [&>svg]:hover:text-black [&>svg]:duration-300'>
+            <Facebook />
+            <Twitter />
+            <Instagram />
+          </div>
         </div>
         <ItemsList title='Activities'>
           <li>Tennis</li>
