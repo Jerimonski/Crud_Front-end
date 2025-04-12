@@ -29,18 +29,18 @@ export default function WelcomeToSection() {
             Welcome to <span className='text-white'>SportsCenter</span>
           </h1>
           <p className='mb-4 text-gray-300'>
-            Our mission is to provide a premium sports experience for everyone,
-            from beginners to professionals. With state-of-the-art facilities
-            and expert instructors, we're committed to helping you achieve your
-            fitness goals.
+            Nuestra misión es brindar una experiencia deportiva de primer nivel
+            para todos, desde principiantes hasta profesionales. Con
+            instalaciones de vanguardia e instructores expertos, nos
+            comprometemos a ayudarte a alcanzar tus objetivos de fitness.
           </p>
           <p className='mb-6 text-gray-300'>
-            Whether you’re looking to play tennis, join a yoga class, or hit the
-            gym, our easy-to-use reservation system ensures you can book your
-            preferred activity in seconds.
+            Ya sea que quieras jugar al tenis, unirte a una clase de yoga o ir
+            al gimnasio, nuestro sistema de reservas fácil de usar te garantiza
+            que podrás reservar tu actividad preferida en segundos.
           </p>
           <button className='bg-green-500 text-black px-5 py-2 rounded-md hover:bg-green-400 transition duration-200'>
-            Learn More About Us
+            Conozca más sobre nosotros
           </button>
 
           {user.length > 0 && (
