@@ -43,7 +43,6 @@ export default function WelcomeToSection() {
             Learn More About Us
           </button>
 
-          {/* Mostrar usuarios si quieres incluirlos */}
           {user.length > 0 && (
             <div className='mt-6'>
               <h2 className='text-xl font-semibold mb-2'>
