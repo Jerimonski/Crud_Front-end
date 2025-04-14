@@ -1,10 +1,10 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import axios from "axios"
 import { useUserContext } from "../../contexts/userContext"
 import { useNavigate } from "react-router-dom"
 import useUsers from "../../hooks/useUsers"
 
-export default function Login() {
+export default function SignIn_LogInPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [isRegistering, setIsRegistering] = useState(false)
