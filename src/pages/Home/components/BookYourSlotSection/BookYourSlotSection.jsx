@@ -13,7 +13,7 @@ export default function BookYourSlotSection() {
         Nuestro sistema de reservacion permite agendar tus actividades
         preferidas en segundos.
       </p>
-      <section className='flex gap-8'>
+      <section className='flex justify-center gap-8'>
         <article className='bg-black py-8 px-4 space-y-4 rounded w-96 border-[#2e2e2e] border'>
           <FilterIcon />
           <form className='space-y-4 py-2 flex flex-col [&>label]:gap-2 [&>label]:py-1 [&>label]:flex [&>label]:flex-col'>
