@@ -2,7 +2,7 @@ import { FilterIcon } from "../../../../../components/ui/Icons"
 
 export default function Form() {
   return (
-    <article className='bg-black py-8 px-4 space-y-4 rounded w-96 border-[#2e2e2e] border'>
+    <section className='bg-black py-8 px-4 space-y-4 rounded w-full max-w-[500px] border border-[#2e2e2e]'>
       <FilterIcon />
       <form className='space-y-4 py-2 flex flex-col [&>label]:gap-2 [&>label]:py-1 [&>label]:flex [&>label]:flex-col'>
         <label>
@@ -29,7 +29,7 @@ export default function Form() {
             <option>Ojirilini mirilinili</option>
           </select>
         </label>
-        <div className='[&>label>input]:py-2 [&>label>input]:bg-dark-blue [&>label]:w-42 [&>label]:py-1 [&>label]:gap-2 [&>label>input]:rounded flex space-x-4 [&>label]:flex [&>label]:flex-col'>
+        <div className='[&>label>input]:py-2 [&>label>input]:bg-dark-blue [&>label]:w-full [&>label]:py-1 [&>label]:gap-2 [&>label>input]:rounded flex space-x-4 [&>label]:flex [&>label]:flex-col'>
           <label>
             Desde
             <select className='bg-dark-blue py-2'>
@@ -65,6 +65,6 @@ export default function Form() {
       <button className='duration-300 bg-light-green text-black cursor-pointer hover:bg-off-green py-1 space-y-2 rounded w-full'>
         Aplicar filtros
       </button>
-    </article>
+    </section>
   )
 }

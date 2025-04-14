@@ -1,23 +1,23 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react"
+import axios from "axios"
 
 export default function WelcomeToSection() {
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState([])
 
   const dataFetch = () => {
     return axios
       .get("http://localhost:3000/usuarios/")
-      .then((response) => setUser(response.data));
-  };
+      .then((response) => setUser(response.data))
+  }
 
   useEffect(() => {
-    dataFetch();
-  }, []);
+    dataFetch()
+  }, [])
 
   // Mostrar los datos de usuario en consola cuando cambian
   useEffect(() => {
-    console.log("Usuarios cargados:", user);
-  }, [user]);
+    console.log("Usuarios cargados:", user)
+  }, [user])
 
   return (
     <div className='bg-[#0f172a] text-white min-h-screen flex items-center justify-center px-4'>
@@ -79,5 +79,5 @@ export default function WelcomeToSection() {
         </div>
       </div>
     </div>
-  );
+  )
 }
