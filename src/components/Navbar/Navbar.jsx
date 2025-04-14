@@ -48,7 +48,10 @@ export default function Navbar() {
           </div>
         ) : (
           <button className='hover:bg-white hover:text-black'>
-            <Link className='flex items-center gap-3 px-4 py-2' to={"/logIn"}>
+            <Link
+              className='flex items-center gap-3 px-4 py-2'
+              to={"/signIn-logIn"}
+            >
               <LogIn />
               Iniciar Sesión
             </Link>
