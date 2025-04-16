@@ -28,7 +28,7 @@ export default function JoinNowSection() {
               alt='Michael Jackson'
               className='relative object-cover w-full h-full'
             />
-            <div className='-rotate-8 -left-20 bg-gray-800 text-white p-4 rounded-lg shadow-lg w-[250px] absolute -bottom-10 max-md:bottom-4'>
+            <div className='-rotate-8 bg-gray-800 text-white p-4 rounded-lg shadow-lg w-[250px] absolute -bottom-10 max-md:-bottom-10 -left-20 max-md:-left-10'>
               <div className='text-yellow-300 text-sm mb-1'>★★★★★</div>
               <p className='text-sm italic text-gray-200'>
                 “Reservar aquí es facilísimo. Llevo 3 meses asistiendo y no
@@ -38,7 +38,7 @@ export default function JoinNowSection() {
                 - Sebastian Olivares, Miembro
               </p>
             </div>
-            <button className='absolute -bottom-6 -right-6 bg-light-green hover:bg-off-green duration-300 text-black px-4 py-2 rounded font-bold shadow max-md:right-1/2 max-md:translate-x-1/2'>
+            <button className='absolute max-md:right-6 -bottom-6 -right-6 bg-light-green hover:bg-off-green duration-300 text-black px-4 py-2 rounded font-bold shadow max-md:right-1/2 max-md:translate-x-1/2'>
               Únete Ahora!
             </button>
           </div>
