@@ -26,23 +26,34 @@ export default function WelcomeToSection() {
 
         {/* Cuadros de imagen a la derecha */}
         <div className='grid grid-cols-2 gap-4'>
-          {[
-            "https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/d96f/live/e6230a40-5be1-11ef-b970-9f202720b57a.jpg.webp",
-            "https://radionacional-v3.s3.amazonaws.com/s3fs-public/styles/portadas_relaciona_4_3/public/node/article/field_image/OLI%20SCARFF%20%20AFP.jpg?h=69f2b9d0&itok=YH6Hv_Ol",
-            "https://www.veritasint.com/blog/wp-content/uploads/2020/01/deportista-de-elite.jpg",
-            "https://valgo.servicioapps.com/uploads/app/163/elements/1/1086image1713171478o.jpg",
-          ].map((src, i) => (
-            <div
-              key={i}
-              className='w-full h-40 overflow-hidden rounded-md shadow-md'
-            >
-              <img
-                src={src}
-                alt={`Actividad ${i + 1}`}
-                className='w-full h-full object-cover'
-              />
-            </div>
-          ))}
+          <div className='w-full h-40 overflow-hidden rounded-md shadow-md'>
+            <img
+              src='/public/AtletismoSWT.jpg'
+              alt='Actividad 1'
+              className='w-full h-full object-cover'
+            />
+          </div>
+          <div className='w-full h-40 overflow-hidden rounded-md shadow-md'>
+            <img
+              src='/public/nadandoSWT.jpg'
+              alt='Actividad 2'
+              className='w-full h-full object-cover'
+            />
+          </div>
+          <div className='w-full h-40 overflow-hidden rounded-md shadow-md'>
+            <img
+              src='/public/soccerSWT.jpg'
+              alt='Actividad 3'
+              className='w-full h-full object-cover'
+            />
+          </div>
+          <div className='w-full h-40 overflow-hidden rounded-md shadow-md'>
+            <img
+              src='/public/trotandoSWT.jpg'
+              alt='Actividad 4'
+              className='w-full h-full object-cover'
+            />
+          </div>
         </div>
       </div>
     </div>
