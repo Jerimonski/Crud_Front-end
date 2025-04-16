@@ -16,7 +16,7 @@ export default function WelcomeToSection() {
 
   // Mostrar los datos de usuario en consola cuando cambian
   useEffect(() => {
-    console.log("Usuarios cargados:", user);
+    console.log(user);
   }, [user]);
 
   return (
