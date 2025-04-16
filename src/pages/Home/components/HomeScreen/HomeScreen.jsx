@@ -4,7 +4,7 @@ export default function HomeScreen() {
   return (
     <section className='h-screen'>
       <img
-        src='https://images.pexels.com/photos/163403/box-sport-men-training-163403.jpeg?cs=srgb&dl=pexels-pixabay-163403.jpg&fm=jpg'
+        src='/ImagenPrincipal.jpg'
         alt='Boxeador'
         className='absolute size-full object-cover brightness-70'
       />

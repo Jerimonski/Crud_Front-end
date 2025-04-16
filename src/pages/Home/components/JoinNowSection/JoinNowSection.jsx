@@ -24,7 +24,7 @@ export default function JoinNowSection() {
         <div className='w-full md:w-1/2 relative px-4'>
           <div className='rotate-5 w-full max-w-[300px] h-[400px] bg-white/10 border border-white/20 rounded-xl mx-auto'>
             <img
-              src='https://i.pinimg.com/736x/99/4d/89/994d8915b6bfe9a81ccd709f287cd1ac.jpg'
+              src='/ClasesDeBaloncesto.jpg'
               alt='Michael Jackson'
               className='relative object-cover w-full h-full'
             />

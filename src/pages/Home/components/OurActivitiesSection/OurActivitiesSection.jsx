@@ -21,7 +21,7 @@ export default function OurActivitiesSection() {
             }
           >
             <img
-              src='https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0b/93/56/42/we-provide-group-lessons.jpg?w=900&h=500&s=1'
+              src='/ClaseDeTenis.jpg'
               alt='Clases de tenis'
               className='object-cover absolute h-full rounded-sm opacity-65'
             />
@@ -34,7 +34,7 @@ export default function OurActivitiesSection() {
             }
           >
             <img
-              src='https://images.squarespace-cdn.com/content/v1/5609a5e7e4b09fa7068369bb/df79f30a-7116-413b-9b34-f8fa8457dd96/1-28-24+CommunityYoga-65.jpg'
+              src='/ClasesDeYoga.jpg'
               alt='Clases de yoga'
               className='object-cover absolute h-full rounded-sm opacity-65'
             />
@@ -46,7 +46,7 @@ export default function OurActivitiesSection() {
             }
           >
             <img
-              src='https://image-tc.galaxy.tf/wijpeg-ci0zqr5bv5tycgdcegb9u1dk3/fitness-center-hotel-orig.jpg?width=1920'
+              src='/ClasesDeGimnasio.jpg'
               alt='Clases de Gimnasio'
               className='object-cover absolute h-full rounded-sm opacity-65'
             />
@@ -58,7 +58,7 @@ export default function OurActivitiesSection() {
             }
           >
             <img
-              src='https://moren.cr/wp-content/uploads/2021/08/57179913-escuela-de-natacion-piscina-instructor-con-ninos.jpg'
+              src='/ClasesDeNatacion.jpg'
               alt='Clases de Gimnasio'
               className='object-cover absolute h-full rounded-sm opacity-65'
             />
