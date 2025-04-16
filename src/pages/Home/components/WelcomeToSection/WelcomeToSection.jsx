@@ -1,24 +1,4 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-
 export default function WelcomeToSection() {
-  const [user, setUser] = useState([]);
-
-  const dataFetch = () => {
-    return axios
-      .get("http://localhost:3000/usuarios/")
-      .then((response) => setUser(response.data));
-  };
-
-  useEffect(() => {
-    dataFetch();
-  }, []);
-
-  // Mostrar los datos de usuario en consola cuando cambian
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
-
   return (
     <div className='bg-[#0f172a] text-white min-h-screen flex items-center justify-center px-4'>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-10 max-w-7xl w-full items-center'>
@@ -42,19 +22,6 @@ export default function WelcomeToSection() {
           <button className='bg-green-500 text-black px-5 py-2 rounded-md hover:bg-green-400 transition duration-200'>
             Conozca más sobre nosotros
           </button>
-
-          {user.length > 0 && (
-            <div className='mt-6'>
-              <h2 className='text-xl font-semibold mb-2'>
-                Usuarios registrados:
-              </h2>
-              <ul className='list-disc list-inside text-gray-300'>
-                {user.map((u, index) => (
-                  <li key={index}>{u.nombre}</li>
-                ))}
-              </ul>
-            </div>
-          )}
         </div>
 
         {/* Cuadros de imagen a la derecha */}
