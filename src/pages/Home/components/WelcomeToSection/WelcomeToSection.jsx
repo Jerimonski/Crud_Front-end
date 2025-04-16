@@ -19,7 +19,7 @@ export default function WelcomeToSection() {
             al gimnasio, nuestro sistema de reservas fácil de usar te garantiza
             que podrás reservar tu actividad preferida en segundos.
           </p>
-          <button className='bg-green-500 text-black px-5 py-2 rounded-md hover:bg-green-400 transition duration-200'>
+          <button className='bg-green-500 text-black px-5 py-2 rounded-md font-bold transform hover:scale-105 hover:bg-green-400 transition duration-200 ease-in-out'>
             Conozca más sobre nosotros
           </button>
         </div>
