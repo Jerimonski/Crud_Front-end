@@ -1,6 +1,6 @@
 export default function WelcomeToSection() {
   return (
-    <div className='bg-[#0f172a] text-white min-h-screen flex items-center justify-center px-4'>
+    <div className='bg-dark-blue text-white min-h-screen flex items-center justify-center px-4'>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-10 max-w-7xl w-full items-center'>
         {/* Texto a la izquierda */}
         <div>
