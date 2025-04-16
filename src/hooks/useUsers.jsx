@@ -2,15 +2,13 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 
 export default function useUsers() {
-  const [users, setUser] = useState([])
+  const [users, setUsers] = useState([])
 
   const fetchData = () => {
     return axios
-      .get("http://localHost:3000/usuarios/")
-      .then((response) => setUser(response.data))
+      .get("http://localhost:3000/usuarios/")
+      .then((response) => setUsers(response.data))
   }
-  console.log(users)
-
   useEffect(() => {
     fetchData()
   }, [])
