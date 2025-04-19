@@ -25,13 +25,10 @@ export default function SignIn_LogInPage() {
       }
 
       try {
-        const response = await axios.post(
-          "http://localhost:3000/usuarios",
-          newUser
-        )
+        const response = await axios.post(import.meta.env.VITE_API_URL, newUser)
 
         if (response.status === 201 || response.status === 200) {
-          alert("Usuario registrado con éxito 🎉 ¡Ahora inicia sesión, oppa~!")
+          alert("Usuario registrado con éxito 🎉 ¡Ahora inicia sesión")
           setIsRegistering(false)
           setName("")
           setEmail("")
@@ -50,7 +47,7 @@ export default function SignIn_LogInPage() {
 
       if (user) {
         setCurrentUser(user)
-        alert(`Bienvenido, ${user.nombre} 💚`)
+        alert(`Bienvenido, ${user.nombre}`)
         navigate("/")
       } else {
         alert("Correo o contraseña incorrectos 😭")
