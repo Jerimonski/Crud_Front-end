@@ -1,18 +1,17 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import axios from "axios"
+import { useEffect, useState } from "react"
 
 export default function useUsers() {
-  const [users, setUser] = useState([]);
+  const [users, setUsers] = useState([])
 
   const fetchData = () => {
     return axios
-      .get("http://localHost:3000/usuarios/")
-      .then((response) => setUser(response.data));
-  };
-
+      .get(import.meta.env.VITE_API_URL)
+      .then((response) => setUsers(response.data))
+  }
   useEffect(() => {
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
-  return { users };
+  return { users }
 }

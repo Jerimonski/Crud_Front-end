@@ -16,16 +16,14 @@ Los usuarios pueden reservar turnos en gimnasios, canchas deportivas y clases de
 ## 🚀 Tecnologías Utilizadas
 
 - **Framework:** React (Next.js o Vite)
-- **Estilos:** Tailwind CSS / Material UI
-- **Estado Global:** Context API o Redux (según sea necesario)
-- **Autenticación:** Firebase Auth o JWT
+- **Estilos:** Tailwind CSS
+- **Estado Global:** Context API
 
 ## 🎯 Funcionalidades Clave
 
 ✔ Interfaz moderna y responsiva  
 ✔ Sistema de autenticación y registro de usuarios  
 ✔ Calendario de reservas con disponibilidad en tiempo real  
-✔ Dashboard para gestionar reservas y usuarios  
 ✔ Notificaciones y recordatorios  
 ✔ Integración con el backend para manejo de datos
 
