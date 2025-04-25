@@ -1,12 +1,14 @@
-import SectionSport from "./components/SectionSport"
+import Baloncesto from "./components/Baloncesto"
+import Tennis from "./components/Tennis"
 export default function Sports() {
   return (
-    <div className='h-screen'>
-      <SectionSport></SectionSport>
-      <section>Yoga</section>
-      <section>Ginmasio</section>
-      <section>Tennis</section>
-      <section>Natacion</section>
+    <div className='h-full'>
+      <section className='bg-black text-center text-white'>
+        <h1 className='text-2xl'>Descubre tu pasion por los deportes</h1>
+        <p>explora</p>
+      </section>
+      <Tennis />
+      <Baloncesto />
     </div>
   )
 }

@@ -96,7 +96,7 @@ export const CalendarIcon = () => (
     stroke-width='2'
     stroke-linecap='round'
     stroke-linejoin='round'
-    className='text-light-green'
+    className='text-off-green'
   >
     <path d='M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z' />
     <path d='M16 3v4' />
@@ -136,7 +136,42 @@ export const RightArrowIcon = () => (
     stroke-width='2'
     color='black'
   >
+    <path d='M9 6l6 6l-6 6'></path>
+  </svg>
+)
+export const UsersIcon = () => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    viewBox='0 0 24 24'
+    fill='none'
+    stroke='currentColor'
+    stroke-linecap='round'
+    stroke-linejoin='round'
+    width='24'
+    height='24'
+    stroke-width='3'
+    className='text-off-green'
+  >
+    <path d='M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0'></path>{" "}
+    <path d='M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2'></path>{" "}
+    <path d='M16 3.13a4 4 0 0 1 0 7.75'></path>{" "}
+    <path d='M21 21v-2a4 4 0 0 0 -3 -3.85'></path>{" "}
+  </svg>
+)
+export const StarIcon = () => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    viewBox='0 0 24 24'
+    fill='none'
+    stroke='currentColor'
+    stroke-linecap='round'
+    stroke-linejoin='round'
+    width='24'
+    height='24'
+    stroke-width='2'
+    className='text-off-green'
+  >
     {" "}
-    <path d='M9 6l6 6l-6 6'></path>{" "}
+    <path d='M17.286 21.09q -1.69 .001 -5.288 -2.615q -3.596 2.617 -5.288 2.616q -2.726 0 -.495 -6.8q -9.389 -6.775 2.135 -6.775h.076q 1.785 -5.516 3.574 -5.516q 1.785 0 3.574 5.516h.076q 11.525 0 2.133 6.774q 2.23 6.802 -.497 6.8'></path>{" "}
   </svg>
 )
