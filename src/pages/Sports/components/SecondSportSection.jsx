@@ -1,11 +1,12 @@
+import { Link } from "react-router-dom"
 import { CalendarIcon, StarIcon, UsersIcon } from "../../../components/ui/Icons"
 
 export default function SecondSportSection({
   title,
   children,
-  label1 = "Para todos",
+  label1 = "Para Todos",
   label2 = "Horario Flexible",
-  label3 = "Coaching profesional",
+  label3 = "Coaching Profesional",
   img,
 }) {
   return (
@@ -14,7 +15,7 @@ export default function SecondSportSection({
         <img
           src={img}
           alt={img}
-          className='w-96 object-cover rounded-lg shadow-2xl'
+          className='w-96 h-96 object-cover rounded-lg shadow-2xl'
         />
         <div className='w-1/4 py-14 space-y-6'>
           <div className='space-y-6'>
@@ -32,9 +33,11 @@ export default function SecondSportSection({
               </span>
             </div>
           </div>
-          <button className='bg-light-green text-black px-4 py-2 rounded-lg duration-300 hover:scale-110'>
-            Conoce mas!
-          </button>
+          <Link to={`/deportes/${title}`}>
+            <button className='bg-light-green text-black px-4 py-2 rounded-lg duration-300 hover:scale-110'>
+              Conoce mas!
+            </button>
+          </Link>
         </div>
       </section>
     </div>
