@@ -38,13 +38,13 @@ export default function SportPages() {
 
   return (
     <main className='h-full bg-blue-night text-white'>
-      <section className='flex flex-wrap justify-center'>
-        <div className='space-y-8'>
+      <section className='max-w-[1800px] flex max-lg:flex-col mx-auto py-14'>
+        <div className='space-y-8 w-1/2 max-lg:mx-auto'>
           <h1 className='text-7xl font-semibold'>
             Experimenta el deporte de{" "}
             <span className='text-light-green'>{sport.title}</span>
           </h1>
-          <p className='w-[500px]'>{sport.description}</p>
+          <p className=''>{sport.description}</p>
           <button className='py-2 px-6 rounded hover:scale-110 duration-300 bg-light-green text-black'>
             Ver agenda
           </button>
@@ -54,48 +54,77 @@ export default function SportPages() {
             <span>Box3</span>
           </div>
         </div>
-        <div>
+        <div className='w-1/2 max-lg:mx-auto'>
           <img
             src={`/${sport.img}`}
-            className='max-w-[500px] object-cover border border-light-green'
+            className='w-full object-cover border border-light-green'
             alt={sport.img}
           />
         </div>
       </section>
-      <section>
-        <div className='text-center'>
-          <h2 className='text-3xl font-semibold'>Agenda de clases</h2>
+
+      <section className='max-w-[1800px] mx-auto py-14 space-y-14'>
+        <div className='text-center space-y-8'>
+          <h2 className='text-5xl font-semibold'>Agenda de clases</h2>
           <p>
             Book your training sessions in advance and secure your spot. Our
             flexible schedule accommodates players of all levels and age groups.
           </p>
         </div>
-        <div className='flex gap-4 bg-dark-blue'>
-          <div className='border border-off-green bg-blue-night p-4 rounded-lg'>
+        <div className='flex max-lg:flex-col p-8 gap-6 bg-dark-blue justify-center'>
+          <div className='border border-dark-green bg-blue-night p-4 rounded-lg space-y-4'>
             <div className='flex'>
               <CalendarIcon />
               Escoge una fecha
             </div>
             <Calendar />
           </div>
-          <div className='border border-off-green bg-blue-night'>
-            <h3>Sesion de entrenamiento para</h3>
-            <article className='container mx-auto px-4 py-12'>
-              <div className='text-center mb-12'>
-                <div className='inline-block bg-[#3cff8f]/10 p-3 rounded-lg mb-4 border border-off-green'>
-                  Icon
-                </div>
-                <h2 className='text-4xl font-bold mb-6'>
-                  What Our Players Say
-                </h2>
-                <p className='text-lg max-w-3xl mx-auto text-secondary-text'>
-                  Don't just take our word for it. Hear from the players who
-                  have experienced our soccer programs firsthand.
-                </p>
+          <div className='border border-dark-green bg-blue-night w-full p-4'>
+            <h3 className='text-lg font-semibold pb-14'>
+              Sesion de entrenamiento para
+            </h3>
+            <div className='text-center space-y-4'>
+              <div className='inline-block p-4 rounded-lg border border-dark-green'>
+                Icon
               </div>
-            </article>
+              <h3>No Sessions Available</h3>
+              <p className='text-lg max-w-3xl mx-auto text-secondary-text'>
+                No training sessions available for the selected date. Please
+                select another date or contact us to schedule a session.
+              </p>
+            </div>
           </div>
         </div>
+      </section>
+
+      <section className='max-w-[1800px] mx-auto py-14 space-y-14'>
+        <div className='text-center space-y-8'>
+          <h2 className='text-5xl font-semibold'>Cooment section</h2>
+          <p className='text-secondary-text'>
+            Don't just take our word for it. Hear from the players who have
+            experienced our soccer programs firsthand.
+          </p>
+        </div>
+        <div className='bg-dark-blue p-8 [&>label]:flex [&>label]:flex-col'>
+          <form className='space-y-6'>
+            <h3 className='text-xl font-semibold'>Deja a un comentario</h3>
+            <input
+              type='text'
+              placeholder='Nombre'
+              className='border-dark-green border py-4 rounded-lg w-full bg-blue-night text-tertiary-text'
+            />
+            <span>Rating:</span>
+            <textarea
+              type='text'
+              placeholder='Nombre'
+              className='border-dark-green border py-4 rounded-lg w-full min-h-36 bg-blue-night text-tertiary-text'
+            />
+            <button className='py-3 px-6 rounded bg-light-green text-black hover:scale-110 duration-300'>
+              Enviar
+            </button>
+          </form>
+        </div>
+        <div className='bg-dark-blue'>asdas</div>
       </section>
     </main>
   )
