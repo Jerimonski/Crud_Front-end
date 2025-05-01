@@ -1,6 +1,10 @@
 import { useParams } from "react-router-dom"
 import Calendar from "../../../components/Calendar"
-import { CalendarIcon } from "./../../../components/ui/Icons"
+import {
+  CalendarIcon,
+  UserCircleIcon,
+  UsersIcon,
+} from "./../../../components/ui/Icons"
 
 export default function SportPages() {
   const SportsInfo = {
@@ -64,14 +68,14 @@ export default function SportPages() {
       </section>
 
       <section className='max-w-[1800px] mx-auto py-14 space-y-14'>
-        <div className='text-center space-y-8'>
+        <div className='text-center space-y-8 '>
           <h2 className='text-5xl font-semibold'>Agenda de clases</h2>
           <p>
             Book your training sessions in advance and secure your spot. Our
             flexible schedule accommodates players of all levels and age groups.
           </p>
         </div>
-        <div className='flex max-lg:flex-col p-8 gap-6 bg-dark-blue justify-center'>
+        <div className='flex max-lg:flex-col p-8 gap-6 bg-dark-blue justify-center rounded-lg'>
           <div className='border border-dark-green bg-blue-night p-4 rounded-lg space-y-4'>
             <div className='flex'>
               <CalendarIcon />
@@ -105,26 +109,39 @@ export default function SportPages() {
             experienced our soccer programs firsthand.
           </p>
         </div>
-        <div className='bg-dark-blue p-8 [&>label]:flex [&>label]:flex-col'>
+        <div className='bg-dark-blue p-8 [&>label]:flex [&>label]:flex-col rounded-lg'>
           <form className='space-y-6'>
             <h3 className='text-xl font-semibold'>Deja a un comentario</h3>
             <input
               type='text'
               placeholder='Nombre'
-              className='border-dark-green border py-4 rounded-lg w-full bg-blue-night text-tertiary-text'
+              className='border-dark-green border py-4 rounded-lg w-full bg-blue-night'
             />
             <span>Rating:</span>
             <textarea
               type='text'
               placeholder='Nombre'
-              className='border-dark-green border py-4 rounded-lg w-full min-h-36 bg-blue-night text-tertiary-text'
+              className='border-dark-green border py-4 rounded-lg w-full min-h-36 bg-blue-night'
             />
             <button className='py-3 px-6 rounded bg-light-green text-black hover:scale-110 duration-300'>
               Enviar
             </button>
           </form>
         </div>
-        <div className='bg-dark-blue'>asdas</div>
+        <article className='bg-dark-blue border-dark-green border rounded-lg p-8'>
+          <div className='flex gap-4'>
+            <div className='w-12'>
+              <UserCircleIcon />
+            </div>
+            <div className=''>
+              <h4 className='font-semibold text-lg'>User fokin name</h4>
+              <span className='text-light-green'>Date</span>
+              <p className='text-wrap'>
+                asdadsdasdasdasdasdsadsadasdadsadasdasdsadsaqwdwqdwdq
+              </p>
+            </div>
+          </div>
+        </article>
       </section>
     </main>
   )
