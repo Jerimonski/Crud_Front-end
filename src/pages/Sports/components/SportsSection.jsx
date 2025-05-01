@@ -16,15 +16,15 @@ export default function SportsSection({
           <div className='space-y-6'>
             <h2 className='text-4xl font-semibold'>{title}</h2>
             <p>{children}</p>
-            <div className='[&>span]:bg-blue-night [&>span]:rounded-lg [&>span]:gap-2 [&>span]:flex [&>span]:p-2 flex gap-2'>
+            <div className='[&>span]:bg-blue-night [&>span]:text-sm [&>span]:rounded-lg [&>span]:gap-2 [&>span]:flex [&>span]:p-2 flex gap-2'>
               <span>
-                <UsersIcon /> {label1}
+                <UsersIcon ClassName={"w-10"} /> {label1}
               </span>
               <span>
-                <CalendarIcon /> {label2}
+                <CalendarIcon ClassName={"w-10"} /> {label2}
               </span>
               <span>
-                <StarIcon /> {label3}
+                <StarIcon ClassName={"w-10"} /> {label3}
               </span>
             </div>
           </div>

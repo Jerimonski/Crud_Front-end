@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import Calendar from "../../../components/Calendar"
 import {
   CalendarIcon,
+  StarIcon,
   UserCircleIcon,
   UsersIcon,
 } from "./../../../components/ui/Icons"
@@ -42,8 +43,8 @@ export default function SportPages() {
 
   return (
     <main className='h-full bg-blue-night text-white'>
-      <section className='max-w-[1800px] flex max-lg:flex-col mx-auto py-14'>
-        <div className='space-y-8 w-1/2 max-lg:mx-auto'>
+      <section className='max-w-[1800px] flex max-lg:flex-col mx-auto py-28'>
+        <div className='space-y-8 lg:w-1/2 max-lg:mx-auto lg:px-14'>
           <h1 className='text-7xl font-semibold'>
             Experimenta el deporte de{" "}
             <span className='text-light-green'>{sport.title}</span>
@@ -52,33 +53,41 @@ export default function SportPages() {
           <button className='py-2 px-6 rounded hover:scale-110 duration-300 bg-light-green text-black'>
             Ver agenda
           </button>
-          <div className='flex justify-center gap-4 w-full [&>span]:py-2 [&>span]:gap-4 [&>span]:rounded [&>span]:bg-dark-blue [&>span]:w-full [&>span]:text-center'>
-            <span>Box1</span>
-            <span>Box2</span>
-            <span>Box3</span>
+          <div className='flex justify-center gap-4 w-full [&>span]:flex [&>span]:flex-col [&>span]:items-center [&>span]:py-2 [&>span]:gap-4 [&>span]:rounded-lg [&>span]:bg-dark-blue [&>span]:w-full [&>span]:text-center'>
+            <span>
+              <CalendarIcon ClassName={"w-10"} /> Horario Flexible
+            </span>
+            <span>
+              <StarIcon ClassName={"w-10"} /> Coaching Profesional
+            </span>
+            <span>
+              <UsersIcon ClassName={"w-10"} />
+              Para Todos
+            </span>
           </div>
         </div>
-        <div className='w-1/2 max-lg:mx-auto'>
+        <div className='lg:w-1/2 max-lg:mx-auto lg:px-14 max-lg:pt-14'>
           <img
             src={`/${sport.img}`}
-            className='w-full object-cover border border-light-green'
+            className='w-full max-h-[500px] object-cover border rounded-lg border-light-green'
             alt={sport.img}
           />
         </div>
       </section>
 
-      <section className='max-w-[1800px] mx-auto py-14 space-y-14'>
-        <div className='text-center space-y-8 '>
+      <section className='max-w-[1800px] mx-auto py-28 space-y-14'>
+        <div className='text-center space-y-4'>
           <h2 className='text-5xl font-semibold'>Agenda de clases</h2>
           <p>
-            Book your training sessions in advance and secure your spot. Our
-            flexible schedule accommodates players of all levels and age groups.
+            Reserve sus sesiones de entrenamiento con anticipación y asegure su
+            lugar. Nuestro el horario flexible se adapta a jugadores de todos
+            los niveles y grupos de edad.
           </p>
         </div>
         <div className='flex max-lg:flex-col p-8 gap-6 bg-dark-blue justify-center rounded-lg'>
-          <div className='border border-dark-green bg-blue-night p-4 rounded-lg space-y-4'>
-            <div className='flex'>
-              <CalendarIcon />
+          <div className='mx-auto border border-dark-green bg-blue-night p-4 rounded-lg space-y-4'>
+            <div className='flex gap-2 justify-center'>
+              <CalendarIcon ClassName={"w-6"} />
               Escoge una fecha
             </div>
             <Calendar />
@@ -88,25 +97,26 @@ export default function SportPages() {
               Sesion de entrenamiento para
             </h3>
             <div className='text-center space-y-4'>
-              <div className='inline-block p-4 rounded-lg border border-dark-green'>
-                Icon
+              <div className='inline-block p-4 bg-dark-blue rounded-full border border-off-green'>
+                <CalendarIcon ClassName={"w-8"} />
               </div>
-              <h3>No Sessions Available</h3>
+              <h3>No hay sesiones disponibles para esta fecha</h3>
               <p className='text-lg max-w-3xl mx-auto text-secondary-text'>
-                No training sessions available for the selected date. Please
-                select another date or contact us to schedule a session.
+                No hay sesiones de entrenamiento disponibles para la fecha
+                seleccionada. Por favor seleccione otra fecha o contáctenos para
+                programar una sesión.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className='max-w-[1800px] mx-auto py-14 space-y-14'>
+      <section className='max-w-[1800px] mx-auto py-28 space-y-14'>
         <div className='text-center space-y-8'>
-          <h2 className='text-5xl font-semibold'>Cooment section</h2>
+          <h2 className='text-5xl font-semibold'>Comentarios</h2>
           <p className='text-secondary-text'>
-            Don't just take our word for it. Hear from the players who have
-            experienced our soccer programs firsthand.
+            No confíe solo en nuestra palabra. Escuche a los jugadores que han
+            experimenté nuestros programas de fútbol de primera mano.
           </p>
         </div>
         <div className='bg-dark-blue p-8 [&>label]:flex [&>label]:flex-col rounded-lg'>
@@ -115,13 +125,13 @@ export default function SportPages() {
             <input
               type='text'
               placeholder='Nombre'
-              className='border-dark-green border py-4 rounded-lg w-full bg-blue-night'
+              className='border-dark-green border p-4 rounded-lg w-full bg-blue-night'
             />
-            <span>Rating:</span>
+            <h3 className='text-xl font-semibold'>Rating:</h3>
             <textarea
               type='text'
-              placeholder='Nombre'
-              className='border-dark-green border py-4 rounded-lg w-full min-h-36 bg-blue-night'
+              placeholder='Deja un comentario...'
+              className='border-dark-green border p-4 rounded-lg w-full min-h-36 bg-blue-night'
             />
             <button className='py-3 px-6 rounded bg-light-green text-black hover:scale-110 duration-300'>
               Enviar
@@ -131,13 +141,27 @@ export default function SportPages() {
         <article className='bg-dark-blue border-dark-green border rounded-lg p-8'>
           <div className='flex gap-4'>
             <div className='w-12'>
-              <UserCircleIcon />
+              <UserCircleIcon ClassName={"w-10"} />
             </div>
-            <div className=''>
-              <h4 className='font-semibold text-lg'>User fokin name</h4>
+            <div>
+              <h4 className='font-semibold text-lg'>ZarcortGame</h4>
               <span className='text-light-green'>Date</span>
               <p className='text-wrap'>
-                asdadsdasdasdasdasdsadsadasdadsadasdasdsadsaqwdwqdwdq
+                [Verso 1: Herobrine] Abran paso a Herobrine Entrando en el
+                freestyle Lo siento, barco, no evitarás que te destroce Pero a
+                nadie le va a importar Ya que nadie te conoce ¿Un barquito
+                fantasma? Qué chistoso Un trozo de madera contra el ser más
+                poderoso Me teletransporto, tengo la realidad a mi poder Si
+                quieres sigo Pero con sólo mi espada me basta pa' dejarte
+                hundido <br />
+                <br />
+                [Verso 2: El Caleuche] Ha llegado El Caleuche entrando al duelo
+                Contra el ser que fue eliminado de su propio juego Yo soy la
+                leyenda que a la gente mata Y tú, la leyenda de los niños rata
+                (This is a Sadikbeats production) Fuera de tu mundo no me haces
+                nada Después de esto serás Enderman; pues le tendrás miedo al
+                agua ¿Qué nadie me conoce? Ja, puta mierda Por lo menos lo' que
+                me conocen sí me recuerdan
               </p>
             </div>
           </div>
