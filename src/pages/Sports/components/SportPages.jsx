@@ -37,6 +37,13 @@ export default function SportPages() {
       Ofrecemos clases en distintos horarios y niveles, guiadas por instructores certificados. 
       Reserva fácilmente y transforma tu día con bienestar y tranquilidad.`,
     },
+    Gimnasio: {
+      title: "Gimnasio",
+      img: "ClasesDeYoga.jpg",
+      description: `Activa tu cuerpo y mente en nuestro gimnasio diseñado para potenciar tu energía y vitalidad. 
+      Contamos con una variedad de clases y equipos para todos los niveles, dirigidos por instructores expertos. 
+      Reserva tu espacio de forma sencilla y experimenta la transformación a través del movimiento y la fuerza.`,
+    },
   }
   const { deporte } = useParams()
   const sport = SportsInfo[deporte]

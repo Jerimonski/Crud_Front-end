@@ -52,6 +52,12 @@ export default function Sports() {
         instructores certificados. Reserva fácilmente y transforma tu día con
         bienestar y tranquilidad.
       </SecondSportSection>
+      <SportsSection title='Gimnasio' img={"ClasesDeGimnasio.jpg"}>
+        Reserva tu cancha y únete a partidas emocionantes o entrenamientos
+        guiados por expertos. Nuestro sistema de agendamiento te permite acceder
+        fácilmente a horarios disponibles, ya sea para jugar entre amigos o
+        practicar en ligas competitivas.
+      </SportsSection>
     </div>
   )
 }
