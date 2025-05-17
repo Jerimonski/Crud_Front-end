@@ -35,29 +35,39 @@ export default function SportPages() {
 
   const SportsInfo = {
     Tennis: {
-      title: "Tennis",
+      title: "Tenis",
       img: "ClaseDeTenis.jpg",
-      description: `Reserva tu clase de tenis y mejora tu técnica...`,
+      description: `Mejora tu técnica y precisión con clases de tenis impartidas por entrenadores 
+      capacitados. Disponemos de canchas en óptimas condiciones para entrenamiento individual o en 
+      grupo. Reserva tu clase y avanza en tu nivel de juego.`,
     },
     Natacion: {
-      title: "Natacion",
+      title: "Natación",
       img: "ClasesDeNatacion.jpg",
-      description: `Agenda tu clase en nuestra piscina olímpica...`,
+      description: `Accede a clases de natación en nuestra piscina olímpica, guiadas por instructores 
+      certificados. Contamos con programas adaptados a todas las edades y niveles. Reserva tu sesión y 
+      disfruta de un entorno seguro y profesional.`,
     },
     Baloncesto: {
       title: "Baloncesto",
       img: "ClasesDeBaloncesto.jpg",
-      description: `Reserva tu cancha y únete a partidas emocionantes...`,
+      description: `Participa en clases o partidas organizadas en nuestras canchas de baloncesto. 
+      Fomenta el trabajo en equipo, la agilidad y la técnica bajo la guía de instructores especializados. 
+      Reserva tu espacio y forma parte de esta experiencia deportiva.`,
     },
     Yoga: {
       title: "Yoga",
       img: "ClasesDeYoga.jpg",
-      description: `Agenda tu sesión de yoga en un ambiente diseñado...`,
+      description: `Agenda sesiones de yoga en un espacio especialmente diseñado para el bienestar 
+      físico y mental. Nuestros instructores certificados te guiarán a través de prácticas enfocadas 
+      en la respiración, la flexibilidad y la relajación. Apto para todos los niveles.`,
     },
     Gimnasio: {
       title: "Gimnasio",
-      img: "ClasesDeYoga.jpg",
-      description: `Activa tu cuerpo y mente en nuestro gimnasio...`,
+      img: "ClasesDeGimnasio.jpg",
+      description: `Accede a un gimnasio completamente equipado para entrenamientos de fuerza, 
+      resistencia y acondicionamiento físico. Ofrecemos atención personalizada y clases grupales 
+      para acompañarte en tu progreso. Reserva tu horario y entrena con seguridad.`,
     },
   }
 
