@@ -6,14 +6,14 @@ import {
   UserCircleIcon,
   UsersIcon,
 } from "../../../components/ui/Icons"
-import useComments from "../../../hooks/useComments" // Aquí está tu fetch
+import useComments from "../../../hooks/useComments"
 import { useState } from "react"
 import { useUserContext as userProvider } from "./../../../contexts/userContext"
 
 export default function SportPages() {
   const { deporte } = useParams()
   const { comentarios, agregarComentario } = useComments(deporte)
-  const { currentUser: user } = userProvider() // Asumimos que aquí hay un user.name o user.id
+  const { currentUser: user } = userProvider()
 
   const [nuevoComentario, setNuevoComentario] = useState("")
 
