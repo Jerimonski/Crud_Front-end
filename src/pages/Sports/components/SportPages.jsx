@@ -28,7 +28,6 @@ export default function SportPages() {
       nombre: user.nombre,
       contenido: nuevoComentario,
       fecha_publicacion: new Date().toISOString(),
-      deporte,
     })
     setNuevoComentario("")
   }
