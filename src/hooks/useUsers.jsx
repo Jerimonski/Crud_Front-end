@@ -6,7 +6,7 @@ export default function useUsers() {
 
   const fetchData = () => {
     return axios
-      .get(import.meta.env.VITE_API_URL)
+      .get(`${import.meta.env.VITE_API_URL}/usuarios`)
       .then((response) => setUsers(response.data))
   }
   useEffect(() => {

@@ -9,7 +9,7 @@ export default function Schedule() {
   return (
     <article className='bg-black border-[#2e2e2e] p-6 border flex flex-col flex-1 min-w-[300px]'>
       <div className='flex justify-between items-center mb-4'>
-        <CalendarIcon />
+        <CalendarIcon ClassName={"w-8"} />
         <div className='text-2xl font-semibold flex items-center gap-2'>
           <button className='bg-white rounded px-2 py-1'>
             <LeftArrowIcon />
