@@ -6,12 +6,6 @@ pipeline {
   }
 
   stages {
-    stage('Clonar') {
-      steps {
-        git branch: 'main', url: 'http://194.163.140.23:3000/lacomarcaja/Front-end.git'
-      }
-    }
-
     stage('Instalar dependencias') {
       steps {
         sh 'npm install'
