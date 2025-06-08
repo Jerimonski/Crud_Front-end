@@ -12,6 +12,16 @@ pipeline {
       }
     }
 
+    stage('SonarQube Analysis') {
+      steps {
+        withSonarQubeEnv('SonarQubeCommunity') {
+          withCredentials([string(credentialsId: 'sonar-token-front', variable: 'SONAR_TOKEN')]) {
+            sh 'npx sonar-scanner -Dsonar.login=$SONAR_TOKEN'
+          }
+        }
+      }
+    }
+
     stage('Build') {
       steps {
         sh 'npm run build'
