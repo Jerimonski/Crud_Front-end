@@ -32,10 +32,10 @@ pipeline {
       steps {
         script {
           def path = params.DEPLOY_ENV == 'development' ? '/var/www/front-dev' : '/var/www/front-prod'
-          withCredentials([sshUserPrivateKey(credentialsId: 'ssh-credential-id-serverb', keyFileVariable: 'SSH_KEY')]) {
+          sshagent(credentials: ['ssh-credential-id-serverb']) {
             sh """
-              ssh -o StrictHostKeyChecking=no -i \$SSH_KEY deployadmin@38.242.243.201 'rm -rf ${path}/*'
-              scp -o StrictHostKeyChecking=no -i \$SSH_KEY -r dist/* deployadmin@38.242.243.201:${path}
+              ssh -o StrictHostKeyChecking=no deployadmin@38.242.243.201 'rm -rf ${path}/*'
+              scp -o StrictHostKeyChecking=no -r dist/* deployadmin@38.242.243.201:${path}
             """
           }
         }
