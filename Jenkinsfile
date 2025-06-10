@@ -38,7 +38,6 @@ pipeline {
             keyFileVariable: 'SSH_KEY',
             usernameVariable: 'SSH_USER'
           )]) {
-            // Comandos de deploy
             sh """
               ssh -o StrictHostKeyChecking=no -i ${SSH_KEY} ${SSH_USER}@38.242.243.201 "mkdir -p ${path} && chown -R deployadmin:deployadmin ${path}"
               scp -o StrictHostKeyChecking=no -i ${SSH_KEY} -r dist/* ${SSH_USER}@38.242.243.201:${path}/
