@@ -25,7 +25,7 @@ export default function SignIn_LogInPage() {
       }
 
       try {
-        const response = await axios.post(import.meta.env.VITE_API_URL, newUser)
+        const response = await axios.post(`${import.meta.env.VITE_API_URL}/usuarios`, newUser)
 
         if (response.status === 201 || response.status === 200) {
           alert("Usuario registrado con éxito 🎉 ¡Ahora inicia sesión")
