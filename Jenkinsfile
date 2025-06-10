@@ -16,7 +16,7 @@ pipeline {
       steps {
         withSonarQubeEnv('SonarQubeCommunity') {
           withCredentials([string(credentialsId: 'sonar-token-front', variable: 'SONAR_TOKEN')]) {
-            sh 'npx sonar-scanner -Dsonar.login=$SONAR_TOKEN'
+            sh 'npx sonar-scanner -Dsonar.token=$SONAR_TOKEN'
           }
         }
       }
@@ -32,10 +32,10 @@ pipeline {
       steps {
         script {
           def path = params.DEPLOY_ENV == 'development' ? '/var/www/front-dev' : '/var/www/front-prod'
-          withCredentials([sshUserPrivateKey(credentialsId: 'ssh-credential-id-serverb', keyFileVariable: 'SSH_KEY', usernameVariable: 'SSH_USER')]) {
+          withCredentials([sshUserPrivateKey(credentialsId: 'ssh-credential-id-serverb', keyFileVariable: 'SSH_KEY')]) {
             sh """
-              ssh -o StrictHostKeyChecking=no -i \$SSH_KEY deployadmin@38.242.243.201 'rm -rf ${path}/*'
-              scp -o StrictHostKeyChecking=no -i \$SSH_KEY -r dist/* deployadmin@38.242.243.201:${path}
+              ssh -i \$SSH_KEY deployadmin@38.242.243.201 'rm -rf ${path}/*'
+              scp -i \$SSH_KEY -r dist/* deployadmin@38.242.243.201:${path}
             """
           }
         }
