@@ -32,7 +32,11 @@ pipeline {
       steps {
         script {
           def path = params.DEPLOY_ENV == 'development' ? '/var/www/front-dev' : '/var/www/front-prod'
-          withCredentials([sshUserPrivateKey(credentialsId: 'ssh-credential-id-serverb', keyFileVariable: 'SSH_KEY')]) {
+
+          withCredentials([sshUserPrivateKey(
+            credentialsId: 'ssh-key-serverb',
+            keyFileVariable: 'SSH_KEY'
+          )]) {
             sh """
               ssh -i \$SSH_KEY deployadmin@38.242.243.201 'rm -rf ${path}/*'
               scp -i \$SSH_KEY -r dist/* deployadmin@38.242.243.201:${path}
