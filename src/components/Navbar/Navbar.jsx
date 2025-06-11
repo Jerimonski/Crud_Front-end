@@ -27,6 +27,11 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
+              <Link className='px-4 py-2 w-24' to={"/deportes"}>
+                Deportes
+              </Link>
+            </li>
+            <li>
               <Link className='px-4 py-2 w-32' to={"/contact"}>
                 Contactanos
               </Link>

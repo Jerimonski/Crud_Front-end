@@ -43,3 +43,15 @@ Los usuarios pueden reservar turnos en gimnasios, canchas deportivas y clases de
 4. Inicia el servidor de desarrollo:
 
 - npm run dev # o yarn dev
+
+## Entorno Ruta en el servidor Descripcion
+
+📁Carpetas del Frontend en el servidor B (38.242.243.201)
+
+- Producción /var/www/front-prod (Carpeta donde se despliega el frontend de producción)
+- Desarrollo /var/www/front-dev (Carpeta donde se despliega el frontend de desarrollo)
+
+🌐 Puertos usados por NGINX
+
+- Producción Puerto:9091 Acceso desde navegador: http://38.242.243.201:9091
+- Desarrollo Puerto:8081 Acceso desde navegador: http://38.242.243.201:8081
