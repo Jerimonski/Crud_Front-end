@@ -70,12 +70,10 @@ pipeline {
         script {
           def path = params.DEPLOY_ENV == 'development' ? '/var/www/front-dev' : '/var/www/front-prod'
           def puerto = params.DEPLOY_ENV == 'development' ? 8081 : 9091
-          def envFile = params.DEPLOY_ENV == 'development' ? '.env.development' : '.env.production'
 
           echo "🚀 Desplegando frontend para: ${params.DEPLOY_ENV}..."
           echo "📁 Ruta remota: ${path}"
           echo "🌐 Puerto asociado: ${puerto}"
-          echo "📄 Archivo de entorno: ${envFile}"
 
           withCredentials([sshUserPrivateKey(credentialsId: 'ssh-key-serverb', keyFileVariable: 'SSH_KEY')]) {
             sh """
@@ -84,15 +82,8 @@ pipeline {
               echo '🧹 Limpiando carpeta remota...'
               ssh -i \$SSH_KEY ${env.SSH_USER}@${env.SSH_HOST} 'rm -rf ${path}/*'
 
-              echo '📦 Subiendo archivos construidos y archivo .env...'
-              scp -i \$SSH_KEY -r dist/* ${envFile} ${env.SSH_USER}@${env.SSH_HOST}:${path}/
-
-              echo '🔧 Renombrando archivo .env en el servidor...'
-              ssh -i \$SSH_KEY ${env.SSH_USER}@${env.SSH_HOST} '
-                cd ${path} &&
-                mv ${envFile} .env &&
-                echo "✅ Archivo de entorno renombrado y listo."
-              '
+              echo '📦 Subiendo archivos construidos...'
+              scp -i \$SSH_KEY -r dist/* ${env.SSH_USER}@${env.SSH_HOST}:${path}/
 
               echo '✅ Despliegue completado en ${params.DEPLOY_ENV}!'
               echo '🌍 Accede a: http://${env.SSH_HOST}:${puerto}'
