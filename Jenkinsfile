@@ -54,12 +54,14 @@ pipeline {
       steps {
         script {
           echo "🚀 Desplegando frontend para: ${params.DEPLOY_ENV}..."
-          
+
           def path = params.DEPLOY_ENV == 'development' ? '/var/www/front-dev' : '/var/www/front-prod'
           def puerto = params.DEPLOY_ENV == 'development' ? 8081 : 9091
+          def envFile = params.DEPLOY_ENV == 'development' ? '.env.development' : '.env.production'
 
           echo "📁 Ruta remota: ${path}"
           echo "🌐 Puerto asociado: ${puerto}"
+          echo "📄 Archivo de entorno: ${envFile}"
 
           withCredentials([sshUserPrivateKey(credentialsId: 'ssh-key-serverb', keyFileVariable: 'SSH_KEY')]) {
             sh """
@@ -68,8 +70,15 @@ pipeline {
                 rm -rf ${path}/*
               '
 
-              echo '📦 Subiendo archivos construidos...'
-              scp -i \$SSH_KEY -r dist/* deployadmin@38.242.243.201:${path}
+              echo '📦 Subiendo archivos construidos y .env...'
+              scp -i \$SSH_KEY -r dist/* ${envFile} deployadmin@38.242.243.201:${path}
+
+              echo '🔧 Renombrando archivo .env en el servidor...'
+              ssh -i \$SSH_KEY deployadmin@38.242.243.201 '
+                cd ${path} &&
+                mv ${envFile} .env &&
+                echo "✅ Archivo de entorno renombrado y listo."
+              '
 
               echo '✅ Despliegue completado en ${params.DEPLOY_ENV}!'
               echo '🌍 Accede a: http://38.242.243.201:${puerto}'
