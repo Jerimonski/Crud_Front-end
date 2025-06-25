@@ -9,8 +9,7 @@ export default function useUsers() {
       .get(`${import.meta.env.VITE_API_URL}/usuarios`)
       .then((response) => setUsers(response.data))
   }
-  console.log(users)
-  console.log(import.meta.env.VITE_API_URL)
+
   useEffect(() => {
     fetchData()
   }, [])
