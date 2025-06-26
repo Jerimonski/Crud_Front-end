@@ -107,7 +107,7 @@ export default function SportPages() {
       </section>
 
       {/* Sección Agenda */}
-      <section className='max-w-[1800px] mx-auto py-28 space-y-14'>
+      {/* <section className='max-w-[1800px] mx-auto py-28 space-y-14'>
         <div className='text-center space-y-4'>
           <h2 className='text-5xl font-semibold'>Agenda de clases</h2>
           <p>
@@ -141,10 +141,10 @@ export default function SportPages() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Sección Comentarios */}
-      <section className='max-w-[1800px] mx-auto py-28 space-y-14'>
+      {/* <section className='max-w-[1800px] mx-auto py-28 space-y-14'>
         <form className='space-y-6' onSubmit={handleEnviar}>
           <h3 className='text-xl font-semibold'>Deja un comentario</h3>
           <div className='flex items-center gap-4'>
@@ -168,7 +168,7 @@ export default function SportPages() {
           </button>
         </form>
 
-        {/* Comentarios Dinámicos */}
+         Comentarios Dinámicos 
         <div className='space-y-8'>
           {comentarios.length > 0 ? (
             comentarios.map((coment, idx) => (
@@ -197,7 +197,7 @@ export default function SportPages() {
             </p>
           )}
         </div>
-      </section>
+      </section> */}
     </main>
   )
 }
