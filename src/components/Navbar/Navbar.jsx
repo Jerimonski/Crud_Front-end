@@ -1,9 +1,16 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useUserContext } from "../../contexts/userContext"
 import { LogIn } from "../ui/Icons"
 
 export default function Navbar() {
-  const { currentUser } = useUserContext()
+  const { currentUser, setCurrentUser } = useUserContext()
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    localStorage.removeItem("token")
+    setCurrentUser(null)
+    navigate("/signIn-logIn")
+  }
 
   return (
     <header className='font-Inter py-4 px-10 md:px-18 w-full bg-black text-white flex items-center top-0 justify-between'>
@@ -32,26 +39,34 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link className='px-4 py-2 w-32' to={"/contact"}>
+              {/* <Link className='px-4 py-2 w-32' to={"/contact"}>
                 Contactanos
               </Link>
             </li>
             <li>
               <Link className='px-4 py-2 w-24' to={"/aboutUs"}>
                 Nosotros
-              </Link>
+              </Link> */}
             </li>
           </ul>
         </nav>
 
         <nav className='text-sm flex flex-grow justify-end basis-0 [&>button]:cursor-pointer [&>button]:rounded [&>button]:duration-300 gap-4'>
           {currentUser ? (
-            <div className='flex items-center gap-3 px-4 py-2 bg-light-green text-black rounded'>
-              <div>
-                <p className='font-semibold'>{currentUser.nombre}</p>
-                <p className='text-xs'>{currentUser.email}</p>
+            <>
+              <div className='flex items-center gap-3 px-4 py-2 bg-light-green text-black rounded'>
+                <div>
+                  <p className='font-semibold'>{currentUser.nombre}</p>
+                  <p className='text-xs'>{currentUser.email}</p>
+                </div>
               </div>
-            </div>
+              <button
+                onClick={handleLogout}
+                className='bg-red-500 hover:bg-red-600 px-4 py-2 rounded text-white font-semibold'
+              >
+                Cerrar Sesión
+              </button>
+            </>
           ) : (
             <button className='hover:bg-white hover:text-black'>
               <Link

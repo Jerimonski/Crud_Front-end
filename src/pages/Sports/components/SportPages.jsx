@@ -72,10 +72,44 @@ export default function SportPages() {
       {/* ... (omitido por brevedad, sin cambios) ... */}
 
       {/* Sección Agenda */}
-      {/* ... (omitido por brevedad, sin cambios) ... */}
+      { <section className='max-w-[1800px] mx-auto py-28 space-y-14'>
+        <div className='text-center space-y-4'>
+          <h2 className='text-5xl font-semibold'>Agenda de clases</h2>
+          <p>
+            Reserve sus sesiones de entrenamiento con anticipación y asegure su
+            lugar. Nuestro horario flexible se adapta a jugadores de todos los
+            niveles y grupos de edad.
+          </p>
+        </div>
+        <div className='flex max-lg:flex-col p-8 gap-6 bg-dark-blue justify-center rounded-lg'>
+          <div className='mx-auto border border-dark-green bg-blue-night p-4 rounded-lg space-y-4'>
+            <div className='flex gap-2 justify-center'>
+              <CalendarIcon ClassName={"w-6"} />
+              Escoge una fecha
+            </div>
+            <Calendar />
+          </div>
+          <div className='border border-dark-green bg-blue-night w-full p-4'>
+            <h3 className='text-lg font-semibold pb-14'>
+              Sesión de entrenamiento para
+            </h3>
+            <div className='text-center space-y-4'>
+              <div className='inline-block p-4 bg-dark-blue rounded-full border border-off-green'>
+                <CalendarIcon ClassName={"w-8"} />
+              </div>
+              <h3>No hay sesiones disponibles para esta fecha</h3>
+              <p className='text-lg max-w-3xl mx-auto text-secondary-text'>
+                No hay sesiones de entrenamiento disponibles para la fecha
+                seleccionada. Por favor seleccione otra fecha o contáctenos para
+                programar una sesión.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section> }
 
       {/* Sección Comentarios */}
-      <section className='max-w-[1800px] mx-auto py-28 space-y-14'>
+      {<section className='max-w-[1800px] mx-auto py-28 space-y-14'>
         <form className='space-y-6' onSubmit={handleEnviar}>
           <h3 className='text-xl font-semibold'>Deja un comentario</h3>
           <div className='flex items-center gap-4'>
@@ -120,7 +154,7 @@ export default function SportPages() {
           </button>
         </form>
 
-        {/* Comentarios Dinámicos */}
+         Comentarios Dinámicos 
         <div className='space-y-8'>
           {comentarios.length > 0 ? (
             comentarios.map((coment, idx) => (
@@ -156,7 +190,7 @@ export default function SportPages() {
             </p>
           )}
         </div>
-      </section>
+      </section> }
     </main>
   )
 }

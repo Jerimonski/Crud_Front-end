@@ -2,7 +2,6 @@ import { useState } from "react"
 import axios from "axios"
 import { useUserContext } from "../../contexts/userContext"
 import { useNavigate } from "react-router-dom"
-import useUsers from "../../hooks/useUsers"
 
 export default function SignIn_LogInPage() {
   const [email, setEmail] = useState("")
@@ -12,7 +11,6 @@ export default function SignIn_LogInPage() {
 
   const { setCurrentUser } = useUserContext()
   const navigate = useNavigate()
-  const { users } = useUsers()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -38,21 +36,37 @@ export default function SignIn_LogInPage() {
           setPassword("")
         }
       } catch (error) {
-        console.error("Error al registrar:", error)
-        alert("¡Uy! Ocurrió un error al registrarse 😢")
+        if (error.response) {
+          console.error("Error al iniciar sesión:", error.response.data)
+          alert(
+            error.response.data.mensaje || "Correo o contraseña incorrectos 😭"
+          )
+        } else if (error.request) {
+          console.error("No se recibió respuesta del servidor:", error.request)
+          alert("Servidor no responde 😢")
+        } else {
+          console.error("Error desconocido:", error.message)
+          alert("Ocurrió un error inesperado 😵")
+        }
       }
     } else {
-      const user = users.find(
-        (u) =>
-          u.email.toLowerCase() === email.toLowerCase() &&
-          u.contraseña === password
-      )
+      try {
+        const response = await axios.post(
+          `${import.meta.env.VITE_API_URL}/usuarios/login`,
+          {
+            email,
+            password,
+          }
+        )
+        const { token, usuario } = response.data
 
-      if (user) {
-        setCurrentUser(user)
-        alert(`Bienvenido, ${user.nombre}`)
+        localStorage.setItem("token", token)
+
+        setCurrentUser(usuario)
+        alert(`Bienvenido, ${usuario.nombre} 🥳`)
         navigate("/")
-      } else {
+      } catch (error) {
+        console.error("Error al iniciar sesión:", error)
         alert("Correo o contraseña incorrectos 😭")
       }
     }

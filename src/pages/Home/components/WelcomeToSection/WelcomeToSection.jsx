@@ -28,28 +28,28 @@ export default function WelcomeToSection() {
         <div className='grid grid-cols-2 gap-4'>
           <div className='w-full h-40 overflow-hidden rounded-md shadow-md'>
             <img
-              src='/public/AtletismoSWT.jpg'
+              src='/AtletismoSWT.jpg'
               alt='Actividad 1'
               className='w-full h-full object-cover'
             />
           </div>
           <div className='w-full h-40 overflow-hidden rounded-md shadow-md'>
             <img
-              src='/public/nadandoSWT.jpg'
+              src='/nadandoSWT.jpg'
               alt='Actividad 2'
               className='w-full h-full object-cover'
             />
           </div>
           <div className='w-full h-40 overflow-hidden rounded-md shadow-md'>
             <img
-              src='/public/soccerSWT.jpg'
+              src='/soccerSWT.jpg'
               alt='Actividad 3'
               className='w-full h-full object-cover'
             />
           </div>
           <div className='w-full h-40 overflow-hidden rounded-md shadow-md'>
             <img
-              src='/public/trotandoSWT.jpg'
+              src='/trotandoSWT.jpg'
               alt='Actividad 4'
               className='w-full h-full object-cover'
             />
