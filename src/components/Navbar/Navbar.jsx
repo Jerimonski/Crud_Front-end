@@ -25,7 +25,6 @@ export default function Navbar() {
             </span>
           </Link>
         </div>
-
         <nav>
           <ul className='flex cursor-pointer w-full text-sm text-center [&>li]:py-2 [&>li]:hover:bg-white [&>li]:hover:text-black [&>li]:rounded [&>li]:duration-300'>
             <li>
@@ -39,18 +38,24 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              {/* <Link className='px-4 py-2 w-32' to={"/contact"}>
+              <Link className='px-4 py-2 w-32' to={"/contact"}>
                 Contactanos
               </Link>
             </li>
             <li>
               <Link className='px-4 py-2 w-24' to={"/aboutUs"}>
                 Nosotros
-              </Link> */}
+              </Link>
+            </li>
+            <li>
+              {currentUser?.rol === "admin" && (
+                <Link className='px-4 py-2 w-24' to={"/AdminDashBoard"}>
+                  Admin
+                </Link>
+              )}
             </li>
           </ul>
         </nav>
-
         <nav className='text-sm flex flex-grow justify-end basis-0 [&>button]:cursor-pointer [&>button]:rounded [&>button]:duration-300 gap-4'>
           {currentUser ? (
             <>

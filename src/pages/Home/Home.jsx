@@ -10,7 +10,7 @@ export default function Home() {
       <HomeScreen />
       <WelcomeToSection />
       <OurActivitiesSection />
-      {/* <BookYourSlotSection /> */}
+      <BookYourSlotSection />
       <JoinNowSection />
     </div>
   )
