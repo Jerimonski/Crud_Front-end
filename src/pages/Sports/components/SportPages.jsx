@@ -17,6 +17,17 @@ export default function SportPages() {
 
   const [nuevoComentario, setNuevoComentario] = useState("")
 
+  const mapDeporteNombreAId = (nombre) => {
+    const mapa = {
+      Tennis: 1,
+      Natacion: 2,
+      Baloncesto: 3,
+      Yoga: 4,
+      Gimnasio: 5,
+    }
+    return mapa[nombre]
+  }
+
   const handleEnviar = (e) => {
     e.preventDefault()
     if (!user) {
@@ -25,10 +36,13 @@ export default function SportPages() {
     }
 
     agregarComentario({
-      nombre: user.nombre,
+      usuario_id: user.id,
+      deporte_id: mapDeporteNombreAId(deporte),
       contenido: nuevoComentario,
-      fecha_publicacion: new Date().toISOString(),
+      valoracion: 5,
+      fecha: new Date().toISOString(),
     })
+
     setNuevoComentario("")
   }
 
@@ -36,37 +50,27 @@ export default function SportPages() {
     Tennis: {
       title: "Tenis",
       img: "ClaseDeTenis.jpg",
-      description: `Mejora tu técnica y precisión con clases de tenis impartidas por entrenadores 
-      capacitados. Disponemos de canchas en óptimas condiciones para entrenamiento individual o en 
-      grupo. Reserva tu clase y avanza en tu nivel de juego.`,
+      description: `Mejora tu técnica y precisión con clases de tenis impartidas por entrenadores capacitados. Disponemos de canchas en óptimas condiciones para entrenamiento individual o en grupo. Reserva tu clase y avanza en tu nivel de juego.`,
     },
     Natacion: {
       title: "Natación",
       img: "ClasesDeNatacion.jpg",
-      description: `Accede a clases de natación en nuestra piscina olímpica, guiadas por instructores 
-      certificados. Contamos con programas adaptados a todas las edades y niveles. Reserva tu sesión y 
-      disfruta de un entorno seguro y profesional.`,
+      description: `Accede a clases de natación en nuestra piscina olímpica, guiadas por instructores certificados. Contamos con programas adaptados a todas las edades y niveles. Reserva tu sesión y disfruta de un entorno seguro y profesional.`,
     },
     Baloncesto: {
       title: "Baloncesto",
       img: "ClasesDeBaloncesto.jpg",
-      description: `Participa en clases o partidas organizadas en nuestras canchas de baloncesto. 
-      Fomenta el trabajo en equipo, la agilidad y la técnica bajo la guía de instructores especializados. 
-      Reserva tu espacio y forma parte de esta experiencia deportiva.`,
+      description: `Participa en clases o partidas organizadas en nuestras canchas de baloncesto. Fomenta el trabajo en equipo, la agilidad y la técnica bajo la guía de instructores especializados. Reserva tu espacio y forma parte de esta experiencia deportiva.`,
     },
     Yoga: {
       title: "Yoga",
       img: "ClasesDeYoga.jpg",
-      description: `Agenda sesiones de yoga en un espacio especialmente diseñado para el bienestar 
-      físico y mental. Nuestros instructores certificados te guiarán a través de prácticas enfocadas 
-      en la respiración, la flexibilidad y la relajación. Apto para todos los niveles.`,
+      description: `Agenda sesiones de yoga en un espacio especialmente diseñado para el bienestar físico y mental. Nuestros instructores certificados te guiarán a través de prácticas enfocadas en la respiración, la flexibilidad y la relajación. Apto para todos los niveles.`,
     },
     Gimnasio: {
       title: "Gimnasio",
       img: "ClasesDeGimnasio.jpg",
-      description: `Accede a un gimnasio completamente equipado para entrenamientos de fuerza, 
-      resistencia y acondicionamiento físico. Ofrecemos atención personalizada y clases grupales 
-      para acompañarte en tu progreso. Reserva tu horario y entrena con seguridad.`,
+      description: `Accede a un gimnasio completamente equipado para entrenamientos de fuerza, resistencia y acondicionamiento físico. Ofrecemos atención personalizada y clases grupales para acompañarte en tu progreso. Reserva tu horario y entrena con seguridad.`,
     },
   }
 
@@ -79,7 +83,7 @@ export default function SportPages() {
         <div className='space-y-8 lg:w-1/2 max-lg:mx-auto lg:px-14'>
           <h1 className='text-7xl font-semibold'>
             Experimenta el deporte de{" "}
-            <span className='text-light-green'>{sport.title}</span>
+            <span className='text-light-green'>{sport?.title}</span>
           </h1>
           <p>{sport?.description}</p>
           <button className='py-2 px-6 rounded hover:scale-110 duration-300 bg-light-green text-black'>
@@ -99,9 +103,9 @@ export default function SportPages() {
         </div>
         <div className='lg:w-1/2 max-lg:mx-auto lg:px-14 max-lg:pt-14'>
           <img
-            src={`/${sport.img}`}
+            src={`/${sport?.img}`}
             className='w-full max-h-[500px] object-cover border rounded-lg border-light-green'
-            alt={sport.img}
+            alt={sport?.img}
           />
         </div>
       </section>
@@ -167,7 +171,7 @@ export default function SportPages() {
             Enviar
           </button>
         </form>
-        Comentarios Dinámicos
+
         <div className='space-y-8'>
           {comentarios.length > 0 ? (
             comentarios.map((coment, idx) => (
@@ -182,7 +186,7 @@ export default function SportPages() {
                   <div>
                     <h4 className='font-semibold text-lg'>{coment.nombre}</h4>
                     <span className='text-light-green text-sm'>
-                      {new Date(coment.fecha_publicacion).toLocaleDateString()}
+                      {new Date(coment.fecha).toLocaleDateString()}
                     </span>
                     <p className='text-wrap'>{coment.contenido}</p>
                   </div>
