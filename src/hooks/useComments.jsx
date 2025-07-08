@@ -1,24 +1,16 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 
-const deportesMap = {
-  Tennis: 1,
-  Natacion: 2,
-  Baloncesto: 3,
-  Yoga: 4,
-  Gimnasio: 5,
-}
-
-export default function useComentarios(nombreDeporte) {
+export default function useComments(deporte_id) {
   const [comentarios, setComentarios] = useState([])
-
-  const deporte_id = deportesMap[nombreDeporte]
 
   const fetchComentarios = async () => {
     if (!deporte_id) return
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}/comentarios?deporte=${deporte_id}`
+        `${
+          import.meta.env.VITE_API_URL
+        }/comentarios/deporte?deporte=${deporte_id}`
       )
       setComentarios(res.data)
     } catch (error) {
@@ -30,13 +22,8 @@ export default function useComentarios(nombreDeporte) {
     usuario_id,
     contenido,
     fecha,
-    valoracion = 5, // ⭐ ahora sí mandamos valoracion
+    valoracion = 5,
   }) => {
-    if (!deporte_id || !usuario_id || !contenido) {
-      console.warn("Faltan datos obligatorios para enviar comentario")
-      return { success: false }
-    }
-
     try {
       await axios.post(`${import.meta.env.VITE_API_URL}/comentarios`, {
         usuario_id,

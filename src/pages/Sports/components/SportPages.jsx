@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom"
-import Calendar from "../../../components/Calendar"
 import {
   CalendarIcon,
   StarIcon,
@@ -7,26 +6,47 @@ import {
   UsersIcon,
 } from "../../../components/ui/Icons"
 import useComments from "../../../hooks/useComments"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useUserContext as userProvider } from "./../../../contexts/userContext"
 
 export default function SportPages() {
   const { deporte } = useParams()
-  const { comentarios, agregarComentario } = useComments(deporte)
+  const [sportIdForComments, setSportIdForComments] = useState(null)
+  const { comentarios, agregarComentario } = useComments(sportIdForComments)
   const { currentUser: user } = userProvider()
 
   const [nuevoComentario, setNuevoComentario] = useState("")
+  const [calificacion, setCalificacion] = useState(0)
 
-  const mapDeporteNombreAId = (nombre) => {
-    const mapa = {
-      Tennis: 1,
-      Natacion: 2,
-      Baloncesto: 3,
-      Yoga: 4,
-      Gimnasio: 5,
+  // Estado para el deporte cargado de la base de datos
+  const [sport, setSport] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  // Traemos el deporte específico desde la base de datos vía API
+  useEffect(() => {
+    async function fetchDeporte() {
+      setLoading(true)
+      setError(null)
+      try {
+        // Aquí cambias la URL por la de tu API real
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/deportes/nombre/${deporte}`
+        )
+        if (!response.ok) {
+          throw new Error("Error al obtener el deporte")
+        }
+        const data = await response.json()
+        setSport(data)
+        setSportIdForComments(data.id)
+      } catch (err) {
+        setError(err.message)
+      } finally {
+        setLoading(false)
+      }
     }
-    return mapa[nombre]
-  }
+    fetchDeporte()
+  }, [deporte])
 
   const handleEnviar = (e) => {
     e.preventDefault()
@@ -34,47 +54,46 @@ export default function SportPages() {
       alert("Debes estar logueado para comentar")
       return
     }
+    if (!sport?.id) {
+      alert("Deporte no encontrado")
+      return
+    }
 
     agregarComentario({
       usuario_id: user.id,
-      deporte_id: mapDeporteNombreAId(deporte),
+      deporte_id: sport.id,
       contenido: nuevoComentario,
-      valoracion: 5,
+      valoracion: calificacion,
       fecha: new Date().toISOString(),
     })
 
     setNuevoComentario("")
+    setCalificacion(0)
   }
 
-  const SportsInfo = {
-    Tennis: {
-      title: "Tenis",
-      img: "ClaseDeTenis.jpg",
-      description: `Mejora tu técnica y precisión con clases de tenis impartidas por entrenadores capacitados. Disponemos de canchas en óptimas condiciones para entrenamiento individual o en grupo. Reserva tu clase y avanza en tu nivel de juego.`,
-    },
-    Natacion: {
-      title: "Natación",
-      img: "ClasesDeNatacion.jpg",
-      description: `Accede a clases de natación en nuestra piscina olímpica, guiadas por instructores certificados. Contamos con programas adaptados a todas las edades y niveles. Reserva tu sesión y disfruta de un entorno seguro y profesional.`,
-    },
-    Baloncesto: {
-      title: "Baloncesto",
-      img: "ClasesDeBaloncesto.jpg",
-      description: `Participa en clases o partidas organizadas en nuestras canchas de baloncesto. Fomenta el trabajo en equipo, la agilidad y la técnica bajo la guía de instructores especializados. Reserva tu espacio y forma parte de esta experiencia deportiva.`,
-    },
-    Yoga: {
-      title: "Yoga",
-      img: "ClasesDeYoga.jpg",
-      description: `Agenda sesiones de yoga en un espacio especialmente diseñado para el bienestar físico y mental. Nuestros instructores certificados te guiarán a través de prácticas enfocadas en la respiración, la flexibilidad y la relajación. Apto para todos los niveles.`,
-    },
-    Gimnasio: {
-      title: "Gimnasio",
-      img: "ClasesDeGimnasio.jpg",
-      description: `Accede a un gimnasio completamente equipado para entrenamientos de fuerza, resistencia y acondicionamiento físico. Ofrecemos atención personalizada y clases grupales para acompañarte en tu progreso. Reserva tu horario y entrena con seguridad.`,
-    },
+  if (loading) {
+    return (
+      <main className='h-full bg-blue-night text-white flex justify-center items-center min-h-screen'>
+        <p className='text-2xl'>Cargando info del deporte...</p>
+      </main>
+    )
   }
 
-  const sport = SportsInfo[deporte]
+  if (error) {
+    return (
+      <main className='h-full bg-blue-night text-white flex justify-center items-center min-h-screen'>
+        <p className='text-2xl text-red-500'>{error}</p>
+      </main>
+    )
+  }
+
+  if (!sport) {
+    return (
+      <main className='h-full bg-blue-night text-white flex justify-center items-center min-h-screen'>
+        <p className='text-2xl'>Deporte no encontrado 😢</p>
+      </main>
+    )
+  }
 
   return (
     <main className='h-full bg-blue-night text-white'>
@@ -83,9 +102,9 @@ export default function SportPages() {
         <div className='space-y-8 lg:w-1/2 max-lg:mx-auto lg:px-14'>
           <h1 className='text-7xl font-semibold'>
             Experimenta el deporte de{" "}
-            <span className='text-light-green'>{sport?.title}</span>
+            <span className='text-light-green'>{sport.title}</span>
           </h1>
-          <p>{sport?.description}</p>
+          <p>{sport.description}</p>
           <button className='py-2 px-6 rounded hover:scale-110 duration-300 bg-light-green text-black'>
             Ver agenda
           </button>
@@ -102,15 +121,10 @@ export default function SportPages() {
           </div>
         </div>
         <div className='lg:w-1/2 max-lg:mx-auto lg:px-14 max-lg:pt-14'>
-          <img
-            src={`/${sport?.img}`}
-            className='w-full max-h-[500px] object-cover border rounded-lg border-light-green'
-            alt={sport?.img}
-          />
+          <img className='w-full max-h-[500px] object-cover border rounded-lg border-light-green' />
         </div>
       </section>
 
-      {/* Sección Agenda */}
       <section className='max-w-[1800px] mx-auto py-28 space-y-14'>
         <div className='text-center space-y-4'>
           <h2 className='text-5xl font-semibold'>Agenda de clases</h2>
@@ -122,11 +136,13 @@ export default function SportPages() {
         </div>
         <div className='flex max-lg:flex-col p-8 gap-6 bg-dark-blue justify-center rounded-lg'>
           <div className='mx-auto border border-dark-green bg-blue-night p-4 rounded-lg space-y-4'>
-            <div className='flex gap-2 justify-center'>
+            <div className='flex gap-2'>
               <CalendarIcon ClassName={"w-6"} />
               Escoge una fecha
             </div>
-            <Calendar />
+            <label className='flex flex-col gap-2 w-64'>
+              <input type='date' className='bg-white text-black' />
+            </label>
           </div>
           <div className='border border-dark-green bg-blue-night w-full p-4'>
             <h3 className='text-lg font-semibold pb-14'>
@@ -146,6 +162,7 @@ export default function SportPages() {
           </div>
         </div>
       </section>
+      {/* ... resto del código igual ... */}
 
       {/* Sección Comentarios */}
       <section className='max-w-[1800px] mx-auto py-28 space-y-14'>
@@ -160,6 +177,7 @@ export default function SportPages() {
               <p className='text-sm text-secondary-text'>Usuario registrado</p>
             </div>
           </div>
+
           <textarea
             placeholder='Deja un comentario...'
             value={nuevoComentario}
@@ -167,6 +185,27 @@ export default function SportPages() {
             className='border-dark-green border p-4 rounded-lg w-full min-h-36 bg-blue-night text-white'
             required
           />
+
+          <div>
+            <label className='block text-white font-semibold mb-2'>
+              Califica el servicio:
+            </label>
+            <div className='flex gap-2'>
+              {[1, 2, 3, 4, 5].map((num) => (
+                <button
+                  type='button'
+                  key={num}
+                  onClick={() => setCalificacion(num)}
+                  className={`text-2xl ${
+                    num <= calificacion ? "text-yellow-400" : "text-gray-500"
+                  }`}
+                >
+                  ★
+                </button>
+              ))}
+            </div>
+          </div>
+
           <button className='py-3 px-6 rounded bg-light-green text-black hover:scale-110 duration-300'>
             Enviar
           </button>
@@ -188,6 +227,15 @@ export default function SportPages() {
                     <span className='text-light-green text-sm'>
                       {new Date(coment.fecha).toLocaleDateString()}
                     </span>
+
+                    <div className='flex items-center gap-1 text-yellow-400 text-lg my-1'>
+                      {[1, 2, 3, 4, 5].map((n) => (
+                        <span key={n}>
+                          {n <= coment.valoracion ? "★" : "☆"}
+                        </span>
+                      ))}
+                    </div>
+
                     <p className='text-wrap'>{coment.contenido}</p>
                   </div>
                 </div>
